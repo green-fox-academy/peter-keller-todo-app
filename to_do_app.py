@@ -34,24 +34,26 @@ def get_arguments():
 def controller():
     arguments = get_arguments()
     if not arguments:
-        print("gebasz")
+        print("usage")
     elif arguments[0] == "-l":
         todos = import_file("todo_app.txt")
         print(todos)
     elif arguments[0] == "-c":
-        print("agrahareg")
+        print("completed")
     elif arguments[0] == "-r":
-        print("afadf")
+        print("remove")
     elif arguments[0] == "-a":
-        print("eas")
+        print("add")
         
 controller()
 
- #   if arguments not in list_arguments:
- #       print("Command line arguments: '\
-#              -l   Lists all the tasks '\
- #             -a   Adds a new task '\
-#              -r   Removes an task '\
- #             -c   Completes an task")
-#    if arguments is "-l":
-#        pass
+def completed_task(items):
+    out = ""
+    for line in items:
+        if line["complete"] == False:
+            pass
+        if line["complete"] == True:
+            pass  
+
+    
+completed_task(import_file("todo_app.txt"))
