@@ -20,6 +20,10 @@ def import_file(file_name):
 todo = sys.argv[0]
 
 
+#everything_else = sys.argv[2:]
+#print(everything_else)
+
+
 def get_arguments():
     arguments = sys.argv[1:]
     list_arguments = ["-a", "-l", "-c", "-r"]
@@ -31,18 +35,26 @@ def get_arguments():
         return False
 
 
-def print_todo(items):
+def check_task(items):
     text = ""
+    i = 1
     for line in items:
+        text += str(i) + " - "
         if line["complete"] == False:
-            text += "[ ] "  
+            text +=  "[ ] "  
         else:
             text += "[X] "  
         text += line['task']
+        i += 1
     print(text)
     
+#def complete_task(items):
+
+
+#sys.argv[2:]
 
 def controller():
+    todos = import_file("todo_app.txt")
     arguments = get_arguments()
     if not arguments:
         print("""Command Line Todo application 
@@ -53,13 +65,12 @@ def controller():
              -r   Removes an task 
              -c   Completes an task""") 
     elif arguments[0] == "-l":
-        todos = import_file("todo_app.txt")
-        print_todo(todos)
+        print(todos)
     elif arguments[0] == "-c":
-        print("completed")
+        check_task(todos)
     elif arguments[0] == "-r":
-        print("remove")
+        print("Unable to remove: no index provided")
     elif arguments[0] == "-a":
-        print("add")
+        print("Unable to add: no task provided")
         
 controller()
